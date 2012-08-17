@@ -614,6 +614,21 @@ extern int pngcrush_main(int argc, char *argv[]);
     NSSound* confirm = [NSSound soundNamed:@"Glass"];
     [confirm play];
 
+		//growl alert
+    NSArray *path = [op.path componentsSeparatedByString:@"/"];
+    NSString *filename = [path objectAtIndex:(NSUInteger)4];
+    NSString *suffix = @" has been uploaded successfully!";
+    NSString *message = [filename stringByAppendingString:suffix];
+		
+    [GrowlApplicationBridge notifyWithTitle:@"Upload complete!"
+									description:message
+							   notificationName:@"Upload complete"
+									   iconData:nil
+									   priority:0
+									   isSticky:NO
+								   clickContext:nil], op.path;
+		//NSLog(@"filename: %@", op.path);
+    
 		// Write thumbnail
 		if (enableThumbnails)
 			[self writeThumbnailForScreenshotAtPath:op.path];
@@ -656,7 +671,21 @@ extern int pngcrush_main(int argc, char *argv[]);
 	[self momentarilyDisplayIcon:iconError];
   NSSound* confirm = [NSSound soundNamed:@"Basso"];
   [confirm play];
-
+  
+	//growl alert
+  NSArray *path = [op.path componentsSeparatedByString:@"/"];
+  NSString *filename = [path objectAtIndex:(NSUInteger)4];
+  NSString *suffix = @" failed to uploaded!";
+  NSString *message = [filename stringByAppendingString:suffix];
+		
+  [GrowlApplicationBridge notifyWithTitle:@"Upload failed!"
+								description:message
+						   notificationName:@"Upload failed"
+								   iconData:nil
+								   priority:0
+								   isSticky:NO
+							   clickContext:nil], op.path;
+  
 	[self updateMenuItem:self];
 	[self updateListOfRecentUploads];
 }
@@ -1082,6 +1111,19 @@ extern int pngcrush_main(int argc, char *argv[]);
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	[log debug:@"event: applicationDidFinishLaunching"];
 	knownScreenshotsOnDesktop = [self screenshotsOnDesktop];
+	[NSApp setActivationPolicy:NSApplicationActivationPolicyAccessory];
+  
+  NSBundle *myBundle = [NSBundle bundleForClass:[DPAppDelegate class]];
+  NSString *growlPath = [[myBundle privateFrameworksPath]
+  	stringByAppendingPathComponent:@"Growl.framework"];
+  NSBundle *growlBundle = [NSBundle bundleWithPath:growlPath];
+  if (growlBundle && [growlBundle load]) {
+  	// Register ourselves as a Growl delegate
+  	[GrowlApplicationBridge setGrowlDelegate:self];
+  } else {
+  	NSLog(@"Could not load Growl.framework");
+  }
+  
 	if (!paused)
 		[self startObservingDesktop];
 	[NSApp setActivationPolicy:NSApplicationActivationPolicyAccessory];

@@ -3,6 +3,7 @@
 #import "HTTPPOSTOperation.h"
 #import "DPAttachedWindow.h"
 #import "DPPreprocessingWindowController.h"
+#import <Growl/Growl.h>
 
 @interface DPAppDelegate : NSObject <SCEventListenerProtocol> {
 	NSUserDefaults *defaults;

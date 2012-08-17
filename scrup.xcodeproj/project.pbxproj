@@ -103,6 +103,9 @@
 		3AF2B0C810FE90610052B40E /* MAAttachedWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF2B0C710FE90610052B40E /* MAAttachedWindow.m */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		F256831A15DE916E00AC0601 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F256831915DE916E00AC0601 /* Growl.framework */; };
+		F256831C15DE91EB00AC0601 /* Growl.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = F256831915DE916E00AC0601 /* Growl.framework */; };
+		F25A040C15DE846A009F9C1A /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = F25A040B15DE846A009F9C1A /* Growl Registration Ticket.growlRegDict */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +126,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				3A919A621065874D002D0F4B /* Sparkle.framework in Copy Frameworks */,
+				F256831C15DE91EB00AC0601 /* Growl.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,6 +254,8 @@
 		3AF2B0C710FE90610052B40E /* MAAttachedWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MAAttachedWindow.m; path = src/MAAttachedWindow.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; explicitFileType = text.xml; fileEncoding = 4; name = Info.plist; path = resources/Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Scrup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scrup.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F256831915DE916E00AC0601 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
+		F25A040B15DE846A009F9C1A /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "Growl Registration Ticket.growlRegDict"; path = "resources/Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AE5605310BC9D02006A7F94 /* libpngcrush.a in Frameworks */,
+				F256831A15DE916E00AC0601 /* Growl.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				3A919A57106586E4002D0F4B /* Sparkle.framework in Frameworks */,
 				3A1C752510BB0FF500BC6030 /* Security.framework in Frameworks */,
@@ -278,6 +285,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F256831915DE916E00AC0601 /* Growl.framework */,
 				3A90678810FE9417009B6B2F /* Quartz.framework */,
 				3A919A56106586E4002D0F4B /* Sparkle.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
@@ -355,6 +363,7 @@
 		29B97317FDCFA39411CA2CEA /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				F25A040B15DE846A009F9C1A /* Growl Registration Ticket.growlRegDict */,
 				3A1C750410BB0F8400BC6030 /* MoveApplication.strings */,
 				3A1C750710BB0F8400BC6030 /* MoveApplication.strings */,
 				3A1C750A10BB0F8400BC6030 /* MoveApplication.strings */,
@@ -607,6 +616,7 @@
 				3ADC9E7410FFF35F00EDEE39 /* BottomTB_line.png in Resources */,
 				3ADC9E7510FFF35F00EDEE39 /* BottomTB_rectangle.png in Resources */,
 				3ADC9EB310FFFE2D00EDEE39 /* BottomTB_inspector.png in Resources */,
+				F25A040C15DE846A009F9C1A /* Growl Registration Ticket.growlRegDict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -799,6 +809,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/frameworks\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
@@ -828,6 +839,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/frameworks\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_AUTO_VECTORIZATION = YES;
 				GCC_ENABLE_OBJC_GC = required;
