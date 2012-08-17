@@ -590,6 +590,8 @@ extern int pngcrush_main(int argc, char *argv[]);
 
 		// Display "error" icon
 		[self momentarilyDisplayIcon:iconError];
+    NSSound* confirm = [NSSound soundNamed:@"Basso"];
+    [confirm play];
 	}
 	else {
 		// add url to scrup record
@@ -608,6 +610,9 @@ extern int pngcrush_main(int argc, char *argv[]);
 
 		// Display "OK" icon
 		[self momentarilyDisplayIcon:iconOk];
+    //play sound
+    NSSound* confirm = [NSSound soundNamed:@"Glass"];
+    [confirm play];
 
 		// Write thumbnail
 		if (enableThumbnails)
@@ -649,6 +654,8 @@ extern int pngcrush_main(int argc, char *argv[]);
 
 	// Display "error" icon
 	[self momentarilyDisplayIcon:iconError];
+  NSSound* confirm = [NSSound soundNamed:@"Basso"];
+  [confirm play];
 
 	[self updateMenuItem:self];
 	[self updateListOfRecentUploads];
